@@ -49,11 +49,11 @@
             <div class="col-lg-2 order-1 mb-3 d-flex flex-column gap-2 mx-auto align-items-stretch">
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT count(hire_date) AS 'Start_Date'FROM employees WHERE hire_date = '1991-05-01' LIMIT 100" onClick="reply_click(this)">2.1</button>
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT emp_id, count(title) FROM titles GROUP BY emp_id HAVING COUNT(title) > 2 LIMIT 100" onClick="reply_click(this)">2.2</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.3</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.4</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.5</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.6</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.7</button>
+                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM employees WHERE gender= 'F' ORDER BY first_name DESC LIMIT 100" onClick="reply_click(this)">2.3</button>
+                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT last_name, hire_date FROM employees WHERE last_name = 'Simmel' and hire_date <= '1986-01-01' LIMIT 100" onClick="reply_click(this)">2.4</button>
+                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT count(*) as 'Total Names with B' FROM employees WHERE last_name LIKE 'B%' LIMIT 100" onClick="reply_click(this)">2.5</button>
+                <button name="1.1.1" class="btn btn-success btn-block" data-sql="New Table called emp_training" onClick="reply_click(this)">2.6</button>
+                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT* FROM emp_training LIMIT 100" onClick="reply_click(this)">2.7</button>
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.8</button>
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.9</button>
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">2.10</button>
