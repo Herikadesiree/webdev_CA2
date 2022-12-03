@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="SQLite Exercise" />
-    <meta name="author" content="" />
+    <meta name="author" content="Herika Martins" />
     <title>Webdev CA2</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -47,13 +47,27 @@
                 <p class="lead"><strong>Part 3</strong></p>
             </div>
             <div class="col-lg-2 order-1 mb-3 d-flex flex-column gap-2 mx-auto align-items-stretch">
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM employees LIMIT 100" onClick="reply_click(this)">3.1</button>
-                <button name="1.1.1" class="btn btn-success btn-block" data-sql="SELECT * FROM departments LIMIT 100" onClick="reply_click(this)">3.2</button>
-                <button name="1.1.1" class="btn btn-success btn-block">3.3</button>
-                <button name="1.1.1" class="btn btn-success btn-block">3.4</button>
-                <button name="1.1.1" class="btn btn-success btn-block">3.5</button>
-                <button name="1.1.1" class="btn btn-success btn-block">3.6</button>
-                <button name="1.1.1" class="btn btn-success btn-block">3.7</button>
+                <button name="3.1.1" class="btn btn-success btn-block" data-sql="SELECT d.dept_id,dept_name, e.gender, COUNT(gender) as 'num_empGender'
+                FROM employees e INNER JOIN dept_manager dm ON e.emp_id = dm.emp_id
+                INNER JOIN departments d ON dm.dept_id = d.dept_id GROUP by dept_name LIMIT 100" onClick="reply_click(this)">3.1</button>
+                <button name="3.1.2" class="btn btn-success btn-block" data-sql="SELECT t.title, e.gender, AVG(salary) as 'avg_salary' 
+        FROM salaries s INNER JOIN titles t ON s.emp_id = t.emp_id INNER JOIN employees e ON t.emp_id = e.emp_id 
+        WHERE t.title = 'Technique Leader' GROUP BY title LIMIT 100" onClick="reply_click(this)">3.2</button>
+                <button name="3.1.3" class="btn btn-success btn-block" data-sql="SELECT count(emp_id) AS 'Total_Employees' FROM salaries 
+        WHERE to_date = '9999-01-01' AND salary BETWEEN 90000 AND 90040 LIMIT 100" onClick="reply_click(this)">3.3</button>
+                <button name="3.1.4" class="btn btn-success btn-block" data-sql="SELECT e.last_name,first_name, s.salary FROM employees e 
+        INNER JOIN salaries s ON e.emp_id = s.emp_id WHERE s.to_date = '9999-01-01' AND s.salary > 90000 
+        ORDER BY last_name DESC, first_name DESC LIMIT 100" onClick="reply_click(this)">3.4</button>
+                <button name="3.1.5" class="btn btn-success btn-block" data-sql="SELECT e.emp_id,first_name,last_name,s.salary,from_date,to_date 
+        FROM employees e INNER JOIN salaries s ON e.emp_id = s.emp_id WHERE e.emp_id = 10012 LIMIT 100" onClick="reply_click(this)">3.5</button>
+                <button name="1.1.1" class="btn btn-success btn-block">TEST</button>
+                <form id="Questions"></form><select name="DB" class="dropdown-content" select name="make">
+                    <form id="3.6"><select name="Question 6"></select><button name="1.1.1"
+                            class="btn btn-success btn-block" class="dropdown-content">3.6</button>
+                        <div></div><a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                            <button name="1.1.1" class="btn btn-success btn-block">3.7</button>
             </div>
             <div class="col-lg-10 order-2 border-success">
                 <textarea id="commands" class="mb-5">TEXT</textarea>
