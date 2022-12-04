@@ -57,16 +57,20 @@
                     data-sql="SELECT * FROM employees WHERE gender= 'F' ORDER BY first_name DESC LIMIT 100"
                     onClick="reply_click(this)">2.3</button>
                 <button name="1.1.1" class="btn btn-success btn-block"
-                    data-sql="SELECT last_name, hire_date FROM employees WHERE last_name = 'Simmel' and hire_date <= '1986-01-01' LIMIT 100"
+                    data-sql="SELECT last_name, hire_date FROM employees 
+WHERE last_name = 'Simmel' and hire_date <= '1986-01-01' LIMIT 100"
                     onClick="reply_click(this)">2.4</button>
                 <button name="1.1.1" class="btn btn-success btn-block"
                     data-sql="SELECT count(*) as 'Total Names with B' FROM employees WHERE last_name LIKE 'B%' LIMIT 100"
                     onClick="reply_click(this)">2.5</button>
                 <button name="1.1.1" class="btn btn-success btn-block"
-                    data-sql="CREATE TABLE emp_training (trainer_no INTEGER PRIMARY KEY AUTOINCREMENT,first_name VARCHAR(30) NULL, last_name VARCHAR(30) NULL, t_module VARCHAR(20))"
+                    data-sql="CREATE TABLE emp_training 
+(trainer_no INTEGER PRIMARY KEY AUTOINCREMENT,first_name VARCHAR(30) NULL, last_name VARCHAR(30) NULL, t_module VARCHAR(20))"
                     onClick="reply_click(this)">2.6</button>
                 <button name="1.1.1" class="btn btn-success btn-block"
-                    data-sql="INSERT INTO emp_training(first_name, last_name, t_module)VALUES ('Joe', 'Bloggs', 'Google Docs'); INSERT INTO emp_training(first_name, last_name, t_module)VALUES ('Fred', 'Bloggs', 'Google Sheets'); SELECT * FROM emp_training;"
+                    data-sql="INSERT INTO emp_training(first_name, last_name, t_module)VALUES ('Joe', 'Bloggs', 'Google Docs'); 
+INSERT INTO emp_training(first_name, last_name, t_module)VALUES ('Fred', 'Bloggs', 'Google Sheets'); 
+SELECT * FROM emp_training LIMIT 100"
                     onClick="reply_click(this)">2.7</button>
                 <button name="1.1.1" class="btn btn-success btn-block" data-sql="DELETE FROM emp_training"
                     onClick="reply_click(this)">2.8</button>
@@ -74,7 +78,9 @@
                     data-sql="ALTER TABLE employees ADD COLUMN email_address VARCHAR(20) NULL "
                     onClick="reply_click(this)">2.9</button>
                 <button name="1.1.1" class="btn btn-success btn-block"
-                    data-sql="UPDATE employees SET email_address= 'gfacello@gmail.com' WHERE emp_id = 10001; SELECT * "
+                    data-sql="UPDATE employees SET email_address= 'gfacello@gmail.com' 
+WHERE emp_id = 10001; 
+SELECT * FROM employees LIMIT 100 "
                     onClick="reply_click(this)">2.10</button>
             </div>
             <div class="col-lg-10 order-2 border-success">
@@ -92,7 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <script type="text/javascript" src="gui.js"></script>
+    <script type="text/javascript" src="js/gui.js"></script>
 </body>
 
 </html>
