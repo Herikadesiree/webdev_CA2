@@ -1,1 +1,114 @@
- 
+<!DOCTYPE html><html lang="en">
+
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="SQLite Exercise">
+        <meta name="author" content="Herika Martins">
+        <title>Webdev CA2</title>
+    
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+        <script>
+            function reply_click(clicked_object) {
+                let sql = clicked_object.getAttribute('data-sql');
+                editor.setValue(sql);
+            }
+        </script>
+    </head>
+    
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">WebDev Ca2</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="part1.html">Part 1</a></li>
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="part2.html">Part 2</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="part3.html">Part 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mt-5">
+                    <h1>CA2: Data Manipulation & Validation</h1>
+                    <p class="lead"><strong> Part 1</strong></p>
+                </div>
+                <div class="col-lg-2 order-1 mb-3 d-flex flex-column gap-2 mx-auto align-items-stretch">
+                    <button name="3.1" class="btn btn-success btn-block" data-sql="SELECT d.dept_id,dept_name, e.gender, COUNT(gender) as 'num_empGender' 
+FROM employees e INNER JOIN dept_manager dm ON e.emp_id = dm.emp_id 
+INNER JOIN departments d ON dm.dept_id = d.dept_id 
+GROUP by dept_name LIMIT 100" onClick = "reply_click(this)">3.1</button>
+                    <button name="3.2" class="btn btn-success btn-block" data-sql="SELECT t.title, e.gender, AVG(salary) as 'avg_salary' 
+FROM salaries s INNER JOIN titles t ON s.emp_id = t.emp_id 
+INNER JOIN employees e ON t.emp_id = e.emp_id 
+WHERE t.title = 'Technique Leader' GROUP BY title LIMIT 100" onClick="reply_click(this)">3.2</button>
+                    <button name="3.3" class="btn btn-success btn-block" data-sql="SELECT count(emp_id) AS 'Total_Employees' FROM salaries 
+WHERE to_date = '9999-01-01' AND salary BETWEEN 90000 AND 90040 LIMIT 100" onClick="reply_click(this)">3.3</button>
+                    <button name="3.4" class="btn btn-success btn-block" data-sql="SELECT e.last_name,first_name, s.salary FROM employees e 
+INNER JOIN salaries s ON e.emp_id = s.emp_id
+WHERE  s.to_date = '9999-01-01' AND s.salary > 90000 
+ORDER BY last_name DESC, first_name DESC LIMIT 100" onClick="reply_click(this)">3.4</button>
+                    <button name="3.5" class="btn btn-success btn-block" data-sql="SELECT e.emp_id,first_name,last_name,s.salary,from_date,to_date 
+FROM employees e INNER JOIN salaries s ON e.emp_id = s.emp_id 
+WHERE e.emp_id = 10012;" onClick="reply_click(this)">3.5</button>
+                    <button name="3.6" class="btn btn-success btn-block" data-sql="a) What is the degree of this table?
+The degree is N-ary, there are 4 attributes in the table salaries.
+
+b) What column(s), if any, make(s) up the primary key?
+The column named from_date DATE is the primary key.
+
+c) What column(s), if any, make(s) up the foreign key?
+The column named emp_id INTEGER is the foreign key." onClick="reply_click(this)">3.6</button>
+                   <button name="3.7" class="btn btn-success btn-block" data-sql="Question: In the given schema, the tables dept_emp, dept_manager, salaries, titles have composite keys. 
+Explain for each relation why this is the case? Support your answer with appropriate references.
+
+*where you have a requirement of keys that can uniquely identify records for better search purposes, 
+but you do not possess any single unique column. In such cases, you must combine multiple columns to 
+create a unique key. 
+                   
+*dept_emp - The composite keys are “emp_id” and “dept_id”. They are the primary keys in their respective 
+tables. Normalising the table was necessary to create a new table that connects both tables called”dept_emp”. 
+It has a tables id and two columns that inform the date the employee started working and when they finished.
+
+*dept_manager - the composite keys are “emp_id” and “dept_id”. They are primary keys in their respective tables, 
+the same case as “dept_emp”. To normalise the table as a good practice, it was created a new table called “dept_manager” 
+it has extra information about.
+
+*Salaries - The number of employees can be repeated, showing how long they stayed with the company and 
+how much the salary increased.
+
+*Titles - emp_id is the composite key to the table. It has all the information about the title and the 
+period that each employee has been working in the specific department." onClick="reply_click(this)">3.7</button>
+                </div>
+                <div class="col-lg-10 order-2 border-success">
+                    <textarea id="commands" class="mb-5">TEXT</textarea>
+                    <div class="d-grid gap-2 mt-2 mb-1"> 
+                        <button class="btn btn-primary" type="button" id="execute">Execute</button>
+                        <input type="file" class="form-control" id="dbfile">
+                    </div>
+                    <div id="error" class="error"></div>
+                    <pre id="output" class="output">Results will be displayed here</pre>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="js/gui.js"></script>
+    </body>
+    
+    </html>
