@@ -47,27 +47,56 @@
                 <p class="lead"><strong>Part 3</strong></p>
             </div>
             <div class="col-lg-2 order-1 mb-3 d-flex flex-column gap-2 mx-auto align-items-stretch">
-                <button name="3.1.1" class="btn btn-success btn-block" data-sql="SELECT d.dept_id,dept_name, e.gender, COUNT(gender) as 'num_empGender'
-                FROM employees e INNER JOIN dept_manager dm ON e.emp_id = dm.emp_id
-                INNER JOIN departments d ON dm.dept_id = d.dept_id GROUP by dept_name LIMIT 100" onClick="reply_click(this)">3.1</button>
+                <button name="3.1.1" class="btn btn-success btn-block" data-sql="SELECT d.dept_id,dept_name, e.gender, 
+COUNT(gender) as 'num_empGender'
+FROM employees e 
+INNER JOIN dept_manager dm 
+ON e.emp_id = dm.emp_id
+INNER JOIN departments d ON dm.dept_id = d.dept_id 
+GROUP by dept_name LIMIT 100"onClick="reply_click(this)">3.1</button>
                 <button name="3.1.2" class="btn btn-success btn-block" data-sql="SELECT t.title, e.gender, AVG(salary) as 'avg_salary' 
-        FROM salaries s INNER JOIN titles t ON s.emp_id = t.emp_id INNER JOIN employees e ON t.emp_id = e.emp_id 
-        WHERE t.title = 'Technique Leader' GROUP BY title LIMIT 100" onClick="reply_click(this)">3.2</button>
-                <button name="3.1.3" class="btn btn-success btn-block" data-sql="SELECT count(emp_id) AS 'Total_Employees' FROM salaries 
-        WHERE to_date = '9999-01-01' AND salary BETWEEN 90000 AND 90040 LIMIT 100" onClick="reply_click(this)">3.3</button>
-                <button name="3.1.4" class="btn btn-success btn-block" data-sql="SELECT e.last_name,first_name, s.salary FROM employees e 
-        INNER JOIN salaries s ON e.emp_id = s.emp_id WHERE s.to_date = '9999-01-01' AND s.salary > 90000 
-        ORDER BY last_name DESC, first_name DESC LIMIT 100" onClick="reply_click(this)">3.4</button>
+FROM salaries s INNER JOIN titles t ON s.emp_id = t.emp_id 
+INNER JOIN employees e ON t.emp_id = e.emp_id 
+WHERE t.title = 'Technique Leader' 
+GROUP BY title LIMIT 100" onClick="reply_click(this)">3.2</button>
+                <button name="3.1.3" class="btn btn-success btn-block" data-sql="SELECT count(emp_id) AS 'Total_Employees' 
+FROM salaries 
+WHERE to_date = '9999-01-01' AND salary BETWEEN 90000 AND 90040 LIMIT 100" onClick="reply_click(this)">3.3</button>
+                <button name="3.1.4" class="btn btn-success btn-block" data-sql="SELECT e.last_name,first_name, s.salary 
+FROM employees e 
+INNER JOIN salaries s
+ON e.emp_id = s.emp_id 
+WHERE s.to_date = '9999-01-01' AND s.salary > 90000 
+ORDER BY last_name DESC, first_name DESC LIMIT 100" onClick="reply_click(this)">3.4</button>
                 <button name="3.1.5" class="btn btn-success btn-block" data-sql="SELECT e.emp_id,first_name,last_name,s.salary,from_date,to_date 
-        FROM employees e INNER JOIN salaries s ON e.emp_id = s.emp_id WHERE e.emp_id = 10012 LIMIT 100" onClick="reply_click(this)">3.5</button>
-                <button name="1.1.1" class="btn btn-success btn-block">TEST</button>
-                <form id="Questions"></form><select name="DB" class="dropdown-content" select name="make">
-                    <form id="3.6"><select name="Question 6"></select><button name="1.1.1"
-                            class="btn btn-success btn-block" class="dropdown-content">3.6</button>
-                        <div></div><a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                            <button name="1.1.1" class="btn btn-success btn-block">3.7</button>
+FROM employees e 
+INNER JOIN salaries s ON e.emp_id = s.emp_id 
+WHERE e.emp_id = 10012 LIMIT 100"onClick="reply_click(this)">3.5</button>
+                    <button name="3.1.6" class="btn btn-success btn-block" data-sql="a) What is the degree of this table?
+The degree is N-ary, there are 4 attributes in the table salaries.
+
+b) What column(s), if any, make(s) up the primary key?
+The column named from_date DATE is the primary key.
+
+c) What column(s), if any, make(s) up the foreign key?
+The column named emp_id INTEGER is the foreign key." onClick="reply_click(this)">3.6</button>
+<button name="3.1.6" class="btn btn-success btn-block" data-sql="Question: In the given schema, the tables dept_emp, dept_manager, salaries, titles have composite keys. 
+Explain for each relation why this is the case? Support your answer with appropriate references.
+
+*dept_emp - The composite keys are “emp_id” and “dept_id”, they are primary keys in 
+their respective tables.Normalise the table it was necessary to create a new 
+table that connects both tables called”dept_emp” . It has both tables id and two
+columns that inform that date the employee started working and when they finished.
+
+*dept_manager -  the composite keys are “emp_id” and “dept_id”, they are primary 
+keys in their respective tables, the same case as “dept_emp”. For normalise the table as 
+a good practice it was created a new table called “dept_manager” it has extra information about.
+
+*Salaries - The composite  key into table salaries is an emp_id that shows the employee id and 
+the respective salary belongs to two columns.
+
+*Titles - emp_id is the composite key to the table. It has all the information about the title 
+and the period that each employee has been working in the specific department." onClick="reply_click(this)">3.7</button>
             </div>
             <div class="col-lg-10 order-2 border-success">
                 <textarea id="commands" class="mb-5">TEXT</textarea>
@@ -88,3 +117,13 @@
 </body>
 
 </html>
+
+<form id="3.6"><select name="Question 6"></select><button name="1.1.1" </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="gui.js"></script>
+        </body>
+
+        </html>
